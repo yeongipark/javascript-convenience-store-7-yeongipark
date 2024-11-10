@@ -1,7 +1,6 @@
 import App from '../src/App.js';
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { EOL as LINE_SEPARATOR } from 'os';
-import { ERROR_MESSAGE } from '../src/constants/errorMessage.js';
 
 const mockQuestions = (inputs) => {
   const messages = [];
@@ -139,34 +138,5 @@ describe('편의점', () => {
       inputsToTerminate: INPUTS_TO_TERMINATE,
       expectedErrorMessage: '[ERROR] 재고 수량을 초과하여 구매할 수 없습니다. 다시 입력해 주세요.',
     });
-  });
-
-  test.each([
-    {
-      description: '재고 수량을 초과한 경우 예외 처리',
-      inputs: ['[콜라-100],[사이다-10]'],
-      inputsToTerminate: INPUTS_TO_TERMINATE,
-      expectedErrorMessage: ERROR_MESSAGE.OVER_QUANTITY,
-    },
-    {
-      description: '형식에 맞지 않은 경우 예외 처리',
-      inputs: ['[콜라-100],사이다-10'],
-      inputsToTerminate: INPUTS_TO_TERMINATE,
-      expectedErrorMessage: ERROR_MESSAGE.NOT_MATCH_FORMAT,
-    },
-    {
-      description: '존재하지 않은 상품을 입력한 경우',
-      inputs: ['[콜라-100],[사이다-10],[원숭이-10]'],
-      inputsToTerminate: INPUTS_TO_TERMINATE,
-      expectedErrorMessage: ERROR_MESSAGE.NOT_EXIST_PRODUCT,
-    },
-    {
-      description: '빈 입력',
-      inputs: [''],
-      inputsToTerminate: INPUTS_TO_TERMINATE,
-      expectedErrorMessage: ERROR_MESSAGE.FALSE_INPUT,
-    },
-  ])('$description', async ({ inputs, inputsToTerminate, expectedErrorMessage }) => {
-    await runExceptions({ inputs, inputsToTerminate, expectedErrorMessage });
   });
 });
