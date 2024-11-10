@@ -14,12 +14,13 @@ export default class Promotions {
 
   isValidatePromotion(promotionName) {
     if (!promotionName) return false;
+
     const promotion = this.#findPromotion(promotionName);
-    const startDate = new Date(promotion.start_date);
-    const endDate = new Date(promotion.end_date);
-    const now = DateTimes.now();
-    if (now >= startDate && now <= endDate) return true;
-    return false;
+    const startDate = new Date(promotion.start_date).getTime();
+    const endDate = new Date(promotion.end_date).getTime();
+    const now = DateTimes.now().getTime();
+
+    return now >= startDate && now <= endDate;
   }
 
   getBuyGetCount(promotionName) {
