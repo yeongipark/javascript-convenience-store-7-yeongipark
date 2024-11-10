@@ -53,12 +53,12 @@ describe('Products 클레스 테스트', () => {
   });
 
   test.each([
-    ['콜라', 20],
-    ['사이다', 15],
-    ['물', 10],
-    ['정식도시락', 8],
-  ])('%s 총 재고 수(프로모션 + 일반) 반환하기', (productName, expected) => {
-    expect(products.getProductQuantity(productName)).toEqual(expected);
+    ['콜라', true, 20],
+    ['사이다', false, 7],
+    ['물', false, 10],
+    ['정식도시락', false, 8],
+  ])('%s 총 재고 수(프로모션 + 일반) 반환하기', (productName, isPromotion, expected) => {
+    expect(products.getProductQuantity(productName, isPromotion)).toEqual(expected);
   });
 
   test('상품 주문 갯수만큼 수량 차감하기, 프로모션인 경우 프로모션 먼저 차감, 프로모션 상품 아닌 경우 일반 재고부터 차감', () => {

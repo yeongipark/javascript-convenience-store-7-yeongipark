@@ -33,16 +33,18 @@ export default class Products {
     return this.#productsInformation.find((product) => product.name === productName);
   }
 
-  getProductQuantity(productName) {
-    return Number(this.#getProductTotalQuantity(productName));
+  getProductQuantity(productName, isPromotion) {
+    return Number(this.#getProductTotalQuantity(productName, isPromotion));
   }
 
-  #getProductTotalQuantity(productName) {
-    return this.#productsInformation
-      .filter((product) => product.name === productName)
-      .reduce((sum, product) => {
-        return (sum += product.quantity);
-      }, 0);
+  #getProductTotalQuantity(productName, isPromotion) {
+    if (isPromotion)
+      return this.#productsInformation
+        .filter((product) => product.name === productName)
+        .reduce((sum, product) => {
+          return (sum += product.quantity);
+        }, 0);
+    return this.#findNoPromotionProduct(productName).quantity;
   }
 
   getPromotionProductQuantity(productName) {

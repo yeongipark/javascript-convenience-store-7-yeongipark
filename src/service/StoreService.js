@@ -26,7 +26,7 @@ export default class StoreService {
     return productsList.map((product) => {
       let message = `- ${product.name} ${product.price.toLocaleString()}원 `;
       if (product.quantity === 0) message += OUTPUT_MESSAGE.NO_QUANTITY;
-      if (product.quantity !== 0) message += `${product.quantity.toLocaleString()}개`;
+      if (product.quantity !== 0) message += `${product.quantity}개`;
       if (product.promotion !== OUTPUT_MESSAGE.NULL) message += ` ${product.promotion}`;
       return message;
     });
@@ -43,7 +43,9 @@ export default class StoreService {
   #validateParsedInputOrder(productsName, parsedInputOrder) {
     Validator.validateProductExist(productsName, parsedInputOrder);
     Object.entries(parsedInputOrder).forEach(([productName, orderCount]) => {
-      const productQuantity = this.#products.getProductQuantity(productName);
+      const promotionName = this.#products.getProductPromotion(productName);
+      const isPromotion = this.#promotions.isValidatePromotion(promotionName);
+      const productQuantity = this.#products.getProductQuantity(productName, isPromotion);
       Validator.validateQuantity(productQuantity, orderCount);
     });
   }
