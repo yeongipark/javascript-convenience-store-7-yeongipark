@@ -41,7 +41,7 @@ export default class OutputView {
       `${this.#padToWidth('총구매액', PRODUCT_NAME_WIDTH)}${totalOrderQuantity}${totalPrice.toLocaleString().padStart(PRICE_WIDTH, ' ')}`,
     );
     Console.print(`${this.#padToWidth('행사할인', DISCOUNT_LABEL_WIDTH)}-${promotionDiscount.toLocaleString()}`);
-    Console.print(`${this.#padToWidth('맴버십할인', DISCOUNT_LABEL_WIDTH)}-${membershipDiscount.toLocaleString()}`);
+    Console.print(`${this.#padToWidth('멤버십할인', DISCOUNT_LABEL_WIDTH)}-${membershipDiscount.toLocaleString()}`);
     Console.print(`${this.#padToWidth('내실돈', DISCOUNT_LABEL_WIDTH)}${finalPrice.toLocaleString()}`);
   }
 
