@@ -6,7 +6,7 @@ describe('Validator 클래스 테스트', () => {
     ['', false],
     ['   ', false],
   ])('빈 값 입력 예외', (input) => {
-    expect(() => Validator.validateInputOrder(input)).toThrow(ERROR_MESSAGE.FALSE_INPUT);
+    expect(() => Validator.validateInputOrder(input)).toThrow(ERROR_MESSAGE.NOT_MATCH_FORMAT);
   });
 
   test.each([['[콜라-0]'], ['[콜라],[사이다-5]'], ['[콜라-5],[5]'], ['[사이다--5],[콜라--5]']])(
