@@ -61,7 +61,7 @@ export default class StoreService {
 
   handleFreeQuantityAnswer(answer, productName, get) {
     Validator.validateAnswer(answer);
-    if (answer.toUpperCase() === 'Y') this.#order.increaseOrderQuantity(productName, get);
+    if (answer === 'Y') this.#order.increaseOrderQuantity(productName, get);
   }
 
   getRegularProductsWithPromotion() {
@@ -79,12 +79,12 @@ export default class StoreService {
 
   handleRegularProductsAnswer(answer, productName, count) {
     Validator.validateAnswer(answer);
-    if (answer.toUpperCase() === 'N') this.#order.decreaseOrderQuantity(productName, count);
+    if (answer === 'N') this.#order.decreaseOrderQuantity(productName, count);
   }
 
   handleMembershipAnswer(answer) {
     Validator.validateAnswer(answer);
-    if (answer.toUpperCase() === 'Y') this.#order.setDiscount(this.#calculateMembershipDiscount());
+    if (answer === 'Y') this.#order.setDiscount(this.#calculateMembershipDiscount());
   }
 
   #calculateMembershipDiscount() {
@@ -117,7 +117,7 @@ export default class StoreService {
 
   handleContinueAnswer(answer) {
     Validator.validateAnswer(answer);
-    if (answer.toUpperCase() === 'N') return false;
+    if (answer === 'N') return false;
     return true;
   }
 

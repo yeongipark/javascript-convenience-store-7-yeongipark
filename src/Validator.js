@@ -26,8 +26,7 @@ export default class Validator {
   }
 
   static validateAnswer(answer) {
-    const answerUpperCase = answer.toUpperCase();
-    if (answerUpperCase !== 'Y' && answerUpperCase !== 'N') this.#throwError(ERROR_MESSAGE.FALSE_INPUT);
+    if (answer !== 'Y' && answer !== 'N') this.#throwError(ERROR_MESSAGE.FALSE_INPUT);
   }
 
   static #throwError(message) {

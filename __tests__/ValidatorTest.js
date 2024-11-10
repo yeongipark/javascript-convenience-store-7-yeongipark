@@ -54,7 +54,7 @@ describe('Validator 클래스 테스트', () => {
     expect(() => Validator.validateAnswer(answer)).toThrow(message);
   });
 
-  test.each([['y'], ['Y'], ['n'], ['N']])('%s가 Y(y) or N(n)인 경우', (answer) => {
+  test.each([['Y'], ['N']])('%s가 Y or N인 경우', (answer) => {
     expect(() => Validator.validateAnswer(answer)).not.toThrow();
   });
 });
