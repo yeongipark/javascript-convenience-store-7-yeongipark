@@ -28,6 +28,7 @@ export default class OutputView {
   }
 
   static giveaways(giveawayList) {
+    if (!giveawayList.length) return;
     Console.print(OUTPUT_MESSAGE.HEADER_GIVEAWAY);
     giveawayList.forEach((giveaway) => {
       const name = this.#padToWidth(giveaway.name, PRODUCT_NAME_WIDTH);
