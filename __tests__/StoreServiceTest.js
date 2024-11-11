@@ -13,7 +13,7 @@ describe('StoreService 테스트 실행', () => {
     ['[콜라-1000]', ERROR_MESSAGE.OVER_QUANTITY],
     ['[바나나바나나]', ERROR_MESSAGE.NOT_MATCH_FORMAT],
     ['[콜라-10],[바나나바나나-100]', ERROR_MESSAGE.NOT_EXIST_PRODUCT],
-    ['', ERROR_MESSAGE.NOT_EXIST_PRODUCT],
+    ['', ERROR_MESSAGE.NOT_MATCH_FORMAT],
   ])('%s 사용자의 구매 입력이 잘못된 경우', (input, error) => {
     expect(() => storeService.handleInputOrder(input)).toThrow(error);
   });

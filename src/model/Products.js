@@ -24,8 +24,9 @@ export default class Products {
   }
 
   getProductPromotion(productName) {
-    const promotion = this.#findProduct(productName).promotion;
-    if (promotion === 'null') return null;
+    const products = this.#productsInformation.filter((product) => product.name === productName);
+    if (products.length === 1) return null;
+    const promotion = products.filter((product) => product.promotion !== 'null')[0].promotion;
     return promotion;
   }
 
