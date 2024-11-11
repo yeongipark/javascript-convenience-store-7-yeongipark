@@ -9,6 +9,7 @@ const DISCOUNT_LABEL_WIDTH = 26;
 export default class OutputView {
   static start() {
     Console.print(OUTPUT_MESSAGE.START);
+    Console.print(OUTPUT_MESSAGE.PRODUCT_INFORMATION_HEADER);
   }
 
   static productsInformation(productsMessageList) {

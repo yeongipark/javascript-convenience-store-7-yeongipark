@@ -10,7 +10,7 @@ describe('Validator 클래스 테스트', () => {
   });
 
   test.each([['[콜라-0]'], ['[콜라],[사이다-5]'], ['[콜라-5],[5]'], ['[사이다--5],[콜라--5]']])(
-    '%s 구매 형식에 맞지 않는 경우우',
+    '%s 구매 형식에 맞지 않는 경우',
     (input) => {
       expect(() => Validator.validateInputOrder(input)).toThrow(ERROR_MESSAGE.NOT_MATCH_FORMAT);
     },
