@@ -18,6 +18,7 @@ export default class OutputView {
   }
 
   static totalProduct(orderList) {
+    if (orderList.length === 0) return;
     Console.print(OUTPUT_MESSAGE.HEADER_PRODUCT);
     Console.print(`${this.#padToWidth('상품명', PRODUCT_NAME_WIDTH)}${this.#padToWidth('수량', QUANTITY_WIDTH)}금액`);
     orderList.forEach((order) => {
@@ -37,6 +38,7 @@ export default class OutputView {
   }
 
   static prices({ totalOrderQuantity, totalPrice, promotionDiscount, finalPrice, membershipDiscount }) {
+    if (totalOrderQuantity === 0) return;
     Console.print(OUTPUT_MESSAGE.HEADER_PRICE);
     Console.print(
       `${this.#padToWidth('총구매액', PRODUCT_NAME_WIDTH)}${totalOrderQuantity}${totalPrice.toLocaleString().padStart(PRICE_WIDTH, ' ')}`,
