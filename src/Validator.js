@@ -7,7 +7,8 @@ export default class Validator {
   }
 
   static #checkEmpty(inputOrder) {
-    if (inputOrder.trim() === '') this.#throwError(ERROR_MESSAGE.NOT_MATCH_FORMAT);
+    if (inputOrder.trim() === '' || inputOrder === undefined || inputOrder === null)
+      this.#throwError(ERROR_MESSAGE.NOT_MATCH_FORMAT);
   }
 
   static #checkOrderFormat(inputOrder) {
