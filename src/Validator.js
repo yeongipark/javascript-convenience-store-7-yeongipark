@@ -12,7 +12,7 @@ export default class Validator {
 
   static #checkOrderFormat(inputOrder) {
     // 구매 형식에 맞는지 확인하는 정규표현식
-    const regExp = /^\[[ㄱ-ㅎ가-힣a-zA-Z]+-[1-9]\d*\](,\[ㄱ-ㅎ[가-힣a-zA-Z]+-[1-9]\d*\])*$/;
+    const regExp = /^\[[ㄱ-ㅎ가-힣a-zA-Z]+-[1-9]\d*\](,\[[ㄱ-ㅎ가-힣a-zA-Z]+-[1-9]\d*\])*$/;
     if (!regExp.test(inputOrder)) this.#throwError(ERROR_MESSAGE.NOT_MATCH_FORMAT);
   }
 
